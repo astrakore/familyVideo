@@ -1,13 +1,21 @@
+// Aquí tenemos el express, el cors y la database
+
 const express = require('express');
 const app = express();
 const cors = require('cors');
 const db = require('./db.js');
 
+// Este es el puerto donde levantaremos el servidor
+
 const PORT = 3000;
+
+// Este es el router desde donde iremos a los distintos endpoints
 
 const router = require('./router');
 
-let corsOptions = {//CONFIGURO OPCIONES DE CORS
+// ESTO ES EL CORS Y SU CONFIGURACIÓN
+
+let corsOptions = {
     origin: "*",
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
     preflightContinue: false,
@@ -20,6 +28,7 @@ app.use(cors(corsOptions));  //USO CORS
 
 
 app.use(router);
+
 
 db.then(()=>{
     app.listen(PORT, ()=> console.log(`Server on port ${PORT}`)); //Conectado a la base de datos

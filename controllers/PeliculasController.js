@@ -3,9 +3,7 @@ const { Pelicula } = require('../models/index');
 const { Op } = require("sequelize");
 const { compareSync } = require("bcrypt");
 
-
 const PeliculasController = {};
-
 
 //Funciones del controlador
 
@@ -13,8 +11,8 @@ PeliculasController.traePeliculas = (req, res) => {
 
 };
 
-PeliculasController.registraPelicula = (req, res) => {
-
+PeliculasController.registraPelicula = async (req, res) => {
+    
 };
 
 PeliculasController.peliculasTitulo = async (req, res) => {
