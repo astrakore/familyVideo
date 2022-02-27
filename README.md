@@ -53,3 +53,25 @@ Se modificará el archivo en la siguiente ruta: ../config/config.json con los da
 
 ## Endpoints
 
+### Usuario
+
+* `http://localhost:3000/usuarios` (GET) Leer todos los usuarios.
+* `http://localhost:3000/usuarios/email/:email` (GET) Traer a un usuario por email.
+* `http://localhost:3000/usuarios/:id` (GET) Traer a un usuario por id.
+* `http://localhost:3000/usuarios` (POST) Registrar a un usuario.
+* `http://localhost:3000/usuarios/:id` (PUT) Modificar los datos de un usuario.
+* `http://localhost:3000/usuarios`(DELETE) Borrar a todos los usuarios.
+* `http://localhost:3000/usuarios/:id` (DELETE) Borrar a un usuario por id.
+* `https://localhost:3000/usuarios/login` (POST) Loguear a un usuario.
+
+### Películas
+
+* `http://localhost:3000/peliculas` (GET) Ver todas las películas.
+* `http://localhost:3000/peliculas/favoritas` (GET) Ver las películas favoritas de la crítica.
+* `http://localhost:3000/peliculas/adultos` (GET) Ver las películas con contenido adulto.
+* `http://localhost:3000/peliculas/titulo` (GET) Ver las películas haciendo una búsqueda por título.
+* `http://localhost:3000/peliculas/novedades` (GET) Ver las películas que están al llegar.
+
+### Pedidos
+
+* `http://localhost:3000/pedidos` (POST) Crear un nuevo pedido.

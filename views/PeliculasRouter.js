@@ -11,10 +11,6 @@ const PeliculasController = require('../controllers/PeliculasController');
 router.get('/', PeliculasController.traePeliculas);
 //http://localhost:3000/peliculas
 
-//Registro de una peli nueva
-router.post('/', PeliculasController.registraPelicula);
-//http://localhost:3000/peliculas
-
 //Búsqueda de películas por título y adulto
 router.get('/favoritas', PeliculasController.favouriteFilms);
 

@@ -25,7 +25,7 @@ router.put('/:id', auth, UsuarioController.updateProfile);
 //Borramos a todos los usuarios
 router.delete('/', isAdmin, UsuarioController.deleteAll);
 
-//Borramos a todos los usuarios
+//Borramos a un usuario por id
 router.delete('/:id', auth, UsuarioController.deleteById);
 
 //Login
