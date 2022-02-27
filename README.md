@@ -10,7 +10,6 @@ Como cuarto proyecto del Bootcamp FullStack Developer de GeeksHubs Academy, se n
 * [Creando la base de datos](#creando-la-base-de-datos)
 * [Dependencias utilizadas en el proyecto](#dependencias-utilizadas-en-el-proyecto)
 * [Endpoints](#endpoints)
-* 
 
 ## Pre-requisitos
 
