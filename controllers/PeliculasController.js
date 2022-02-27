@@ -11,7 +11,7 @@ PeliculasController.traePeliculas = async (req, res) => {
     
     try {
 
-        let resultados = await axios.get("https://api.themoviedb.org/3/movie/latest?api_key=210d6a5dd3f16419ce349c9f1b200d6d&language=en-US");
+        let resultados = await axios.get("https://api.themoviedb.org/3/movie/now_playing?api_key=210d6a5dd3f16419ce349c9f1b200d6d&language=en-US&page=1");
 
         res.send(resultados.data);
 
@@ -20,6 +20,27 @@ PeliculasController.traePeliculas = async (req, res) => {
     }
     
 };
+
+PeliculasController.registraPelicula = async (req, res) => {
+
+    let titulo = req.body.titulo;
+    let sinopsis = req.body.sinopsis;
+    let adult = req.body.adult;
+    let fecha = req.body.fecha;
+
+    Pelicula.create({
+        titulo: titulo,
+        sinopsis: sinopsis,
+        adult: adult,
+        fecha: fecha
+    }).then(pelicula => {
+        res.send(`${pelicula.titulo} ha sido registrada`);
+    })
+    .catch((error) => {
+        res.send(error);
+    });
+
+}
 
 PeliculasController.peliculasTitulo = async (req, res) => {
 
@@ -51,9 +72,9 @@ PeliculasController.traeNovedades = async (req, res) => {
     }
 }
 
-PeliculasController.favouriteFilms = (req,res) => {
+PeliculasController.favouriteFilms = async (req,res) => {
 
-
+    let films = await axios.get("https://api.themoviedb.org/3/movie/now_playing?api_key=210d6a5dd3f16419ce349c9f1b200d6d&language=en-US&page=1");
     let titulo = req.query.titulo;
     let adult = req.query.adult;
     let popularity = req.query.popularity;

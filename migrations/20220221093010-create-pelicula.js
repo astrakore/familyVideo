@@ -17,12 +17,6 @@ module.exports = {
       adult: {
         type: Sequelize.BOOLEAN
       },
-      popularity: {
-        type: Sequelize.FLOAT
-      },
-      image: {
-        type: Sequelize.STRING
-      },
       fecha: {
         type: Sequelize.STRING
       },
