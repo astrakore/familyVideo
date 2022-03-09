@@ -15,15 +15,16 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: 'usuarioId'
       });
     }
-  };
+  }
   Usuario.init({
-    name: DataTypes.STRING,
-    age: DataTypes.INTEGER,
-    surname: DataTypes.STRING,
-    email: DataTypes.STRING,
+    nombre: DataTypes.STRING,
+    apellidos: DataTypes.STRING,
+    fecha: DataTypes.DATE,
+    correo: DataTypes.STRING,
+    dni: DataTypes.STRING,
     password: DataTypes.STRING,
-    nickname: DataTypes.STRING,
-    rol: DataTypes.BOOLEAN
+    telefono: DataTypes.STRING,
+    cuenta: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'Usuario',

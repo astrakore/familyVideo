@@ -8,19 +8,19 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      price: {
+      precio: {
         type: Sequelize.INTEGER
       },
       peliculaId: { 
         type: Sequelize.INTEGER, 
         allowNull: false, 
         references: { 
-          model: 'Peliculas', //Le decimos que su referencia es la tabla 'Peliculas' (nombre en plural del modelo master)
-          key: 'id' // mediante su id 
+          model: 'Peliculas',
+          key: 'id'
         }, 
-        onUpdate: 'CASCADE', //Le decimos que al actualizar una película, también lo haga con ese pedido
-        onDelete: 'CASCADE' //Le decimos que al borrar una película, también borre ese pedido 
-      }, 
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE'
+      },
       usuarioId: { 
         type: Sequelize.INTEGER, 
         allowNull: false, 
@@ -31,7 +31,10 @@ module.exports = {
         onUpdate: 'CASCADE', 
         onDelete: 'CASCADE' 
       },
-      fecha: {
+      fechaPedido: {
+        type: Sequelize.DATE
+      },
+      fechaDevolver: {
         type: Sequelize.DATE
       },
       createdAt: {

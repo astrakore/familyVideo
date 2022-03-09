@@ -15,12 +15,13 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: 'peliculaId'
       });
     }
-  };
+  }
   Pelicula.init({
     titulo: DataTypes.STRING,
     sinopsis: DataTypes.STRING,
     adult: DataTypes.BOOLEAN,
-    fecha: DataTypes.DATE
+    fecha: DataTypes.DATE,
+    poster: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'Pelicula',
