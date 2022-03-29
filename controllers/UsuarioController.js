@@ -29,7 +29,7 @@ UsuarioController.traerUsuarioId = (req, res) => {
 
 UsuarioController.traerUsuarioEmail = (req, res) => {
     //Búsqueda comparando un campo
-    Usuario.findOne({ where : { email : req.params.email }})
+    Usuario.findOne({ where : { correo : req.params.correo }})
     .then(data => {
         res.send(data)
     });
@@ -43,16 +43,14 @@ UsuarioController.registraUsuario = async (req, res) => {
     
     //Registrando un usuario
     
-        let name = req.body.name;
-        let age = req.body.age;
-        let surname = req.body.surname;
-        let nickname = req.body.nickname;
-        let email = req.body.email;
-        let rol = req.body.rol;
-        console.log("antes de encriptar",req.body.password);
-        let password = bcrypt.hashSync(req.body.password, Number.parseInt(authConfig.rounds)); 
-        
-        console.log("este es el password", password);
+        let nombre = req.body.nombre;
+        let apellidos = req.body.apellidos;
+        let fecha = req.body.fecha;
+        let correo = req.body.correo;
+        let dni = req.body.dni;
+        let password = bcrypt.hashSync(req.body.password, Number.parseInt(authConfig.rounds));
+        let telefono = req.body.telefono;
+        let cuenta = req.body.cuenta;
         //Comprobación de errores.....
         
         //Guardamos en sequelize el usuario
@@ -62,13 +60,8 @@ UsuarioController.registraUsuario = async (req, res) => {
 
                 [Op.or] : [
                     {
-                        email : {
-                            [Op.like] : email
-                        }
-                    },
-                    {
-                        nickname : {
-                            [Op.like] : nickname
+                        correo : {
+                            [Op.like] : correo
                         }
                     }
                 ]
@@ -80,15 +73,16 @@ UsuarioController.registraUsuario = async (req, res) => {
             if(datosRepetidos == 0){
 
                     Usuario.create({
-                    name: name,
-                    age: age,
-                    surname: surname,
-                    email: email,
-                    rol: rol,
-                    password: password,
-                    nickname: nickname
+                    nombre : nombre,
+                    apellidos : apellidos,
+                    fecha : fecha,
+                    correo : correo,
+                    dni : dni,
+                    password : password,
+                    telefono : telefono,
+                    cuenta : cuenta
                 }).then(usuario => {
-                    res.send(`${usuario.name}, bienvenida a este infierno`);
+                    res.send(`${usuario.nombre}, bienvenida a este infierno`);
                 })
                 .catch((error) => {
                     res.send(error);
@@ -100,9 +94,6 @@ UsuarioController.registraUsuario = async (req, res) => {
         }).catch(error => {
             res.send(error)
         });
-
-    
-    
 };
 
 UsuarioController.updateProfile = async (req, res) => {
@@ -168,11 +159,11 @@ UsuarioController.deleteById = async (req, res) => {
 
 UsuarioController.logUsuario = (req, res) => {
 
-    let correo = req.body.email;
+    let correo = req.body.correo;
     let password = req.body.password;
 
     Usuario.findOne({
-        where : {email : correo}
+        where : {correo : correo}
     }).then(Usuario => {
 
         if(!Usuario){
