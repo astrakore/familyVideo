@@ -162,7 +162,7 @@ UsuarioController.logUsuario = (req, res) => {
     let password = req.body.password;
 
     Usuario.findOne({
-        where : {correo : correo}
+        where : {"correo" : correo}
     }).then(Usuario => {
 
         if(!Usuario){
