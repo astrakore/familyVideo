@@ -170,7 +170,6 @@ UsuarioController.logUsuario = (req, res) => {
         }else {
             //el usuario existe, por lo tanto, vamos a comprobar
             //si el password es correcto
-
             if (bcrypt.compareSync(password, Usuario.password)) { //COMPARA CONTRASEÑA INTRODUCIDA CON CONTRASEÑA GUARDADA, TRAS DESENCRIPTAR
 
                 console.log(Usuario.password);
@@ -190,7 +189,11 @@ UsuarioController.logUsuario = (req, res) => {
 
 
     }).catch(error => {
-        res.send(error);
+        if (error === {}) {
+            res.send("No se ha encontrado el usuario");
+        }else{
+            res.send(error);
+        }
     })
 };
 
